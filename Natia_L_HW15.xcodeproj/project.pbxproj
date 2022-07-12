@@ -68,21 +68,61 @@
 		6047614D287CD14F00286FE2 /* Natia_L_HW15 */ = {
 			isa = PBXGroup;
 			children = (
-				6047614E287CD14F00286FE2 /* AppDelegate.swift */,
-				60476150287CD14F00286FE2 /* SceneDelegate.swift */,
-				60CF33BC287D909E00E429E4 /* ViewCornerRadiusExtension.swift */,
-				60CF33BE287DA2B000E429E4 /* FormatingLongNumberDouble .swift */,
-				60476162287CD1B900286FE2 /* MovieModel.swift */,
-				60476152287CD14F00286FE2 /* ViewController.swift */,
-				60476166287CD20C00286FE2 /* MovieListTableViewCell.swift */,
-				60CF33BA287D8F8A00E429E4 /* DetailsViewController.swift */,
-				60476154287CD14F00286FE2 /* Main.storyboard */,
-				60CF33B8287D8F4F00E429E4 /* Details.storyboard */,
+				60CF33C7287DC6E000E429E4 /* SupportingFiles */,
+				60CF33C6287DC6C900E429E4 /* Controllers */,
+				60CF33C4287DC6A500E429E4 /* Extensions */,
+				60CF33C5287DC6B700E429E4 /* Model */,
+				60CF33C8287DC6F500E429E4 /* View */,
 				60476157287CD14F00286FE2 /* Assets.xcassets */,
-				60476159287CD14F00286FE2 /* LaunchScreen.storyboard */,
 				6047615C287CD14F00286FE2 /* Info.plist */,
 			);
 			path = Natia_L_HW15;
+			sourceTree = "<group>";
+		};
+		60CF33C4287DC6A500E429E4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				60CF33BC287D909E00E429E4 /* ViewCornerRadiusExtension.swift */,
+				60CF33BE287DA2B000E429E4 /* FormatingLongNumberDouble .swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		60CF33C5287DC6B700E429E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				60476162287CD1B900286FE2 /* MovieModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		60CF33C6287DC6C900E429E4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				60CF33BA287D8F8A00E429E4 /* DetailsViewController.swift */,
+				60476152287CD14F00286FE2 /* ViewController.swift */,
+				60476166287CD20C00286FE2 /* MovieListTableViewCell.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		60CF33C7287DC6E000E429E4 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				60476150287CD14F00286FE2 /* SceneDelegate.swift */,
+				6047614E287CD14F00286FE2 /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		60CF33C8287DC6F500E429E4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				60476154287CD14F00286FE2 /* Main.storyboard */,
+				60CF33B8287D8F4F00E429E4 /* Details.storyboard */,
+				60476159287CD14F00286FE2 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

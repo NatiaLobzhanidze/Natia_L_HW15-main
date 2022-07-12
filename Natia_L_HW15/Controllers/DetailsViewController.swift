@@ -41,12 +41,15 @@ class DetailsViewController: UIViewController {
         if sender.titleLabel?.text == "Add To Favorite List" {
             sender.setTitle("Remove from Favorite List", for: UIControl.State.normal)
             favoriteMoveis.insert(title)
-            delegate?.passFavoriteMovieTitle(from: Array(favoriteMoveis))
+           
+            print(favoriteMoveis.count)
         } else {
             sender.setTitle("Add To Favorite List", for: UIControl.State.normal)
             favoriteMoveis.remove(title)
-            delegate?.passFavoriteMovieTitle(from: Array(favoriteMoveis))
+            print(favoriteMoveis.count)
+           // delegate?.passFavoriteMovieTitle(from: Array(favoriteMoveis))
         }
+        delegate?.passFavoriteMovieTitle(from: Array(favoriteMoveis))
     }
     
     func setUpView(){
