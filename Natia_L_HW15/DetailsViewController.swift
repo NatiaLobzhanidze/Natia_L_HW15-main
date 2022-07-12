@@ -7,10 +7,12 @@
 
 import UIKit
 
-
+protocol MakeFavList {
+    func passFavoriteMovieTitle(from arr: [String])
+}
 class DetailsViewController: UIViewController {
  
-    
+    var favoriteMoveis = Set<String>()
 
     @IBOutlet weak var coverPoster: UIImageView!
     @IBOutlet weak var mainPoster: UIImageView!
@@ -22,25 +24,31 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var overView: UITextView!
     
     var detailsModel: DetailsModel?
-
+    
+    var delegate: MakeFavList!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        
     }
-
+    
     @IBAction func makeAsFav(_ sender: UIButton) {
         
-      
-        
+        guard let title = self.movieTitle.text else { return }
+       // favoriteMoveis.append()
+
+       
         if sender.titleLabel?.text == "Add To Favorite List" {
             sender.setTitle("Remove from Favorite List", for: UIControl.State.normal)
+            favoriteMoveis.insert(title)
+            delegate?.passFavoriteMovieTitle(from: Array(favoriteMoveis))
         } else {
             sender.setTitle("Add To Favorite List", for: UIControl.State.normal)
+            favoriteMoveis.remove(title)
+            delegate?.passFavoriteMovieTitle(from: Array(favoriteMoveis))
         }
-        
     }
+    
     func setUpView(){
         guard let movieDetails = detailsModel else { return }
         coverPoster.image = movieDetails.coverImage

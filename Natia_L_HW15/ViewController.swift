@@ -13,9 +13,11 @@ protocol GetDetailsDelegate {
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var detailsDelegate: GetDetailsDelegate!
     
+    var detailsDelegate: GetDetailsDelegate!
+    var mybool = false
     var movieList = [Movie]()
+    var filteredArray = [Movie]()
     var watchedArray = [Movie]()
     var unwatchedArray = [Movie]()
     
@@ -25,8 +27,26 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+      
+       
+    }
+    
+    
+    @IBAction func makeFavList(_ sender: UIButton) {
+        watchedArray.removeAll()
+        unwatchedArray.removeAll()
+        watchedArray = filteredArray.filter({$0.seen == true })
+        unwatchedArray = filteredArray.filter({$0.seen == false })
+        mybool = true
+        tableView.reloadData()
+        
+    }
+    
+    @IBAction func allSeenMoviesBtn(_ sender: Any) {
         watchedArray = movieList.filter({$0.seen == true })
         unwatchedArray = movieList.filter({$0.seen == false })
+        tableView.reloadData()
+        
     }
     
     func makeMovieList() {
@@ -35,7 +55,27 @@ class ViewController: UIViewController {
             let actor = titlesAndActorsDictionary.values.map{$0}[i]
             movieList.append(Movie(image: UIImage(named: title), title: title, releaseDate: "\(Int.random(in: 2005...2022))", imdb: Double( Double.random(in: 0...5).format(f: oneFormat)) ?? 0.0, mainActor: actor, seen: Bool.random(), isFavourite: Bool.random()))
         }
+      
+         
+
+   
+        watchedArray = movieList.filter({$0.seen == true })
+        unwatchedArray = movieList.filter({$0.seen == false })
+        
     }
+}
+
+
+extension ViewController: MakeFavList {
+    
+    func passFavoriteMovieTitle(from arr: [String]) {
+        for elem in arr  {
+            filteredArray = movieList.filter{$0.title == elem}
+        }
+        
+    }
+    
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource, MovieListDelegate {
@@ -107,7 +147,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, MovieListD
             let elem = unwatchedArray[indexPath.row]
             vc.detailsModel = DetailsModel(image: elem.image, coverImage: elem.image, title: elem.title, releaseDate: elem.releaseDate, imdb: elem.imdb, mainActor: elem.mainActor, seen: elem.seen, isFavourite: elem.isFavourite, description: elem.description)
         }
-        
+       
+        vc.delegate = self
         navigationController?.pushViewController( vc, animated: true)
         
     }
